@@ -1,8 +1,9 @@
 import axios from 'axios';
-import baseURL from './config-baseURL';
+import baseURLConfig from './config-baseURL';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.baseURL = baseURL;
+axios.defaults.baseURL = baseURLConfig.baseURL;
+console.log(axios.defaults.baseURL);
 axios.defaults.withCredentials = true;
 
 export default function request (url, type = "GET", data = {}) {
@@ -14,6 +15,7 @@ export default function request (url, type = "GET", data = {}) {
           return status >= 200 && status < 300 || status === 400
         }
       };
+      console.log(JSON.stringify(option))
       if (type.toLocaleLowerCase() === 'get') {
         option.params = data;
       } else {
