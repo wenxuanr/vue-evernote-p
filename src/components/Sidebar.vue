@@ -22,7 +22,7 @@
     methods: {
       logout(){
         Auth.logout().then(data => {
-          this.$router.push({path:'login'})
+          this.$router.push({path:'/login'})
         }).catch(e => {
           console.log(e);
         })

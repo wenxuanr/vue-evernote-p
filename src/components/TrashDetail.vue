@@ -16,7 +16,6 @@
     created() {
       Auth.getInfo().then(res => {
         if (!res.isLogin) {
-          console.log("1111");
           this.$router.push({path : '/login'})
         }
       })
