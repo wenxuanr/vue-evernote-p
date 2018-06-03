@@ -28,7 +28,6 @@
     },
     computed: {
       slug() {
-        console.log("this username is " + JSON.stringify(this.username));
         return this.username.charAt(0)
       }
     }

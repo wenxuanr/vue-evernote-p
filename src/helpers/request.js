@@ -14,7 +14,6 @@ export default function request (url, type = "GET", data = {}) {
           return status >= 200 && status < 300 || status === 400
         }
       };
-      console.log(JSON.stringify(option))
       if (type.toLocaleLowerCase() === 'get') {
         option.params = data;
       } else {

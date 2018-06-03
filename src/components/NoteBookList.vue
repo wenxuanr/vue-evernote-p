@@ -23,6 +23,7 @@
       }
     },
     created() {
+      window.detail_this = this;
       Auth.getInfo().then(res => {
         if (!res.isLogin) {
           this.$router.push({path : '/login'})
