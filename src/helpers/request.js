@@ -3,7 +3,6 @@ import baseURLConfig from './config-baseURL';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.baseURL = baseURLConfig.baseURL;
-console.log(axios.defaults.baseURL);
 axios.defaults.withCredentials = true;
 
 export default function request (url, type = "GET", data = {}) {

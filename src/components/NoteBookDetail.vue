@@ -6,6 +6,8 @@
 
 
 <script>
+  import Auth from '@/apis/auth'
+
   export default {
     name:"Login",
     data(){
@@ -13,6 +15,14 @@
       return {
         msg: "This is detail about notebook..."
       }
+    },
+    created() {
+      Auth.getInfo().then(res => {
+        if (!res.isLogin) {
+          console.log("1111");
+          this.$router.push({path : '/login'})
+        }
+      })
     }
   }
 </script>

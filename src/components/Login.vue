@@ -44,7 +44,7 @@
 <script>
 //  import request from '@/helpers/request';
   import Auth from '@/apis/auth';
-
+  import Bus from '@/helpers/bus';
   Auth.getInfo().then(data => {
     console.log(data);
   });
@@ -92,9 +92,14 @@
           username:this.register.username,
           password:this.register.password
         }).then(data=> {
-          console.log(data);
+          this.register.isError = false;
+          this.register.notice =  '';
+          Bus.$emit('user_info',{username: this.register.username});
+          //this.$router == Router 这个对象
+          this.$router.push({path:'notebooks'})
         }).catch(e => {
-          console.log(e);
+          this.register.isError = true;
+          this.register.notice = e.msg;
         });
         this.register.isError = false;
         this.register.notice = '';
@@ -114,9 +119,13 @@
           username:this.login.username,
           password:this.login.password
         }).then(data=> {
-          console.log(data);
+          this.login.isError = false;
+          this.login.notice = '';
+          Bus.$emit('user_info',{username: this.login.username});
+          this.$router.push({path:'notebooks'});
         }).catch(e => {
-          console.log(e);
+          this.login.isError = true;
+          this.login.notice = e.msg;
         });
 
         this.login.isError = false;
