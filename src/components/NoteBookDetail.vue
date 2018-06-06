@@ -1,15 +1,23 @@
 <template>
-  <div id="note-detail">
-    <h1>{{msg}} : {{ $route.params.noteId }}</h1>
+  <div id="note" class="detail">
+    <NoteSideBar/>
+    <div id="note-detail">
+      <h1>{{msg}} : {{ $route.query.noteId }}</h1>
+      <h1>{{msg}} : {{ $route.query.notebookId }}</h1>
+    </div>
   </div>
 </template>
 
 
 <script>
   import Auth from '@/apis/auth'
+  import NoteSideBar from '@/components/NoteSideBar.vue'
 
   export default {
-    name:"Login",
+    components: {
+      NoteSideBar
+    },
+    name:"NoteBookDetail",
     data(){
       console.log(this.$route);
       return {

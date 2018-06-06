@@ -29,12 +29,12 @@ export default new Router({
       component: NoteBookList
     },
     {
-      path:'/note/:noteId',
+      path:'/note/',
       name:"notebookDetail",
       component: NoteBookDetail
     },
     {
-      path:'/trash/:noteId',
+      path:'/trash/',
       name:"trash",
       component: TrashDetail
     },

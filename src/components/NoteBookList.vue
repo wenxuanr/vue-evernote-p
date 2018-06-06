@@ -11,7 +11,7 @@
           笔记本列表({{notebooks.length}})
         </h3>
         <div class="book-list">
-          <router-link to="/note/1" class="notebook" v-for="item in notebooks">
+          <router-link  class="notebook" v-for="item in notebooks" :to="`/note/?notebookId=${item.id}`">
             <div>
               <span class="iconfont icon-notebook">
               </span>

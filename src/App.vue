@@ -7,6 +7,7 @@
 
 <script>
   import Sidebar from '@/components/Sidebar.vue'
+  import NodeSideBar from '@/components/NoteSideBar'
 
   export default {
     name: 'app',
