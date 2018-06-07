@@ -2,8 +2,20 @@
   <div id="note" class="detail">
     <NoteSideBar/>
     <div id="note-detail">
-      <h1>{{msg}} : {{ $route.query.noteId }}</h1>
-      <h1>{{msg}} : {{ $route.query.notebookId }}</h1>
+      <div class="note-bar">
+        <span>创建日期：2天前</span>
+        <span>更新日期：1分钟前</span>
+        <span>已保存</span>
+        <span class="iconfont icondelete"></span>
+        <span class="iconfont icon-fullscreen"></span>
+      </div>
+      <div class="note-title">
+        <input type="text" placeholder="输入标题">
+      </div>
+      <div class="editor">
+        <textarea v-show="true" placeholder="输入内容，支持markdown"></textarea>
+        <div class="preview markdown-body" v-html="" v-show="false"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -37,7 +49,5 @@
 
 
 <style lang="less" scoped>
-    h1 {
-      color: red;
-    }
+  @import url('../assets/css/note-detail.less');
 </style>
