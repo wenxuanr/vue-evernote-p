@@ -2,7 +2,7 @@
   <div class="note-sidebar">
     <el-dropdown class="notebook-title" @command="handleCommand" placement="bottom">
       <span class="el-dropdown-link">{{currentBook.title}} <i class="iconfont icon-down"></i></span>
-      <span class="btn add-note">添加笔记</span>
+      <span class="btn add-note" @click="addNote">添加笔记</span>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item v-for="item in notebooks" :command="item.id">
         {{item.title}}
@@ -37,7 +37,7 @@
 <script>
   import Notebooks from '@/apis/notebooks';
   import Notes from '@/apis/notes';
-
+  import Bus from '@/helpers/bus'
   window.Notes = Notes;
   export default {
     data(){
@@ -54,6 +54,8 @@
         return Notes.getAll({notebookId : this.currentBook.id})
       }).then(res => {
         this.notes =  res.data;
+        this.$emit('update:notes', this.notes);
+        Bus.$emit('update:notes', this.notes);
       })
 
     },
@@ -66,11 +68,14 @@
         if (notebookId != 'trash') {
           Notes.getAll({notebookId})
             .then(res=> {
-              console.log(res);
               this.notes = res.data;
+              this.$emit('update:notes', this.notes);
               this.currentBook = this.notebooks.find(notebook => notebook.id === notebookId);
             })
         }
+      },
+      addNote() {
+         Notes.addNotebook({notebookId: this.currentBook.id }).then(data => this.notes.unshift(data.data))
       }
     }
   }
