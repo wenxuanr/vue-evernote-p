@@ -10,7 +10,7 @@
     name: 'Login',
     data () {
       return {
-        msg: '回收站笔记详情页'
+        msg: 'This feature can be added on in the future....'
       }
     },
     created() {
